@@ -9,7 +9,9 @@ export default function Login() {
             <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
                     <Label htmlFor="email">E-mail</Label>
-                    <InputEmail id="email" />
+                    <InputEmail
+                        id="email"
+                        tabIndex={1} />
                 </div>
 
                 <div className="grid gap-2">
@@ -17,14 +19,17 @@ export default function Login() {
                         <Label htmlFor="password">Senha</Label>
                         <LinkText
                             href="/auth/forget-password"
-                            className="ml-auto text-sm" >Esqueceu sua senha?</LinkText>
+                            className="ml-auto text-sm">Esqueceu sua senha?</LinkText>
                     </div>
-                    <InputPassword id="password" />
+                    <InputPassword
+                        id="password"
+                        tabIndex={2} />
                 </div>
 
                 <Button
                     type="submit"
-                    className="w-full">
+                    className="w-full"
+                    tabIndex={3}>
                     Acessar
                 </Button>
             </div>

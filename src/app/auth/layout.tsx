@@ -12,7 +12,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                         <div className="flex flex-col items-center gap-2">
                             <a
                                 href="#"
-                                className="flex flex-col items-center gap-2 font-medium">
+                                className="flex flex-col items-center gap-2 font-medium"
+                                tabIndex={-1}>
                                 <div className="flex h-10 w-10 items-center justify-center rounded-md">
                                     <CarIcon className="size-dvh" />
                                 </div>
