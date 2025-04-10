@@ -1,8 +1,7 @@
-import { InputEmail } from "@/components/inputs";
+import { InputEmail } from "@/components/inputs"
+import { LinkText } from "@/components/links"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-
-import Link from 'next/link';
 
 export default function ForgetPassword() {
     return (
@@ -20,12 +19,8 @@ export default function ForgetPassword() {
                 </Button>
             </div>
 
-            <div className="mt-5 text-center">
-                <Link
-                    href="/auth/login"
-                    className="text-sm underline-offset-2 hover:underline">
-                    Voltar para o Login
-                </Link>
+            <div className="mt-5 text-center text-sm">
+                <LinkText href="/auth/login">Voltar para o Login</LinkText>
             </div>
         </form>
     )

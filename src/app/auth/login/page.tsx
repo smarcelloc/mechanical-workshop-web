@@ -1,7 +1,7 @@
-import { InputEmail, InputPassword } from "@/components/inputs";
+import { InputEmail, InputPassword } from "@/components/inputs"
+import { LinkText } from "@/components/links"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import Link from 'next/link';
 
 export default function Login() {
     return (
@@ -15,11 +15,9 @@ export default function Login() {
                 <div className="grid gap-2">
                     <div className="flex items-center">
                         <Label htmlFor="password">Senha</Label>
-                        <Link
+                        <LinkText
                             href="/auth/forget-password"
-                            className="ml-auto text-sm underline-offset-2 hover:underline">
-                            Esqueceu sua senha?
-                        </Link>
+                            className="ml-auto text-sm" >Esqueceu sua senha?</LinkText>
                     </div>
                     <InputPassword id="password" />
                 </div>
