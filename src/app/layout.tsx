@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="pt-br" data-lt-installed="true">
+    <html lang="pt-br" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );
