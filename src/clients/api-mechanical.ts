@@ -1,15 +1,15 @@
-import { RequestJson, RequestJsonError, ResponseJsonData, RequestJsonData } from '@/lib/request-json'
+import { Request, RequestError, ResponseData, RequestData } from '@/lib/request'
 
-export class ApiMechanical extends RequestJson {
+export class ApiMechanical extends Request {
     public constructor(baseUrl: string) { super(baseUrl) }
     public setAuth = (token: string) => this.setHeaderDefault('Authorization', `Bearer ${token}`)
     public deleteAuth = () => this.deleteHeaderDefault('Authorization')
 
-    protected async send(data: RequestJsonData): Promise<ResponseJsonData> {
+    protected async send(data: RequestData): Promise<ResponseData> {
         try {
             return await super.send(data)
         } catch (error) {
-            if (error instanceof RequestJsonError && error.response.status === 401) this.deleteAuth()
+            if (error instanceof RequestError && error.response.status === 401) this.deleteAuth()
             throw error
         }
     }

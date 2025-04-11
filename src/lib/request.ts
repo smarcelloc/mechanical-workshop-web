@@ -1,4 +1,4 @@
-export interface RequestJsonData {
+export interface RequestData {
     method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
     url: string,
     headers?: HeadersInit,
@@ -6,20 +6,20 @@ export interface RequestJsonData {
     signal?: AbortSignal
 }
 
-export interface ResponseJsonData {
+export interface ResponseData {
     status: number,
     headers: Headers,
     body?: any,
 }
 
-export class RequestJsonError extends Error {
-    constructor(public message: string, public response: ResponseJsonData) {
+export class RequestError extends Error {
+    constructor(public message: string, public response: ResponseData) {
         super(message)
-        this.name = 'RequestJsonError'
+        this.name = 'RequestError'
     }
 }
 
-export class RequestJson {
+export class Request {
 
     constructor(protected baseUrl?: string, private headersDefault: HeadersInit = {}) {
         this.setHeaderDefault('Content-Type', 'application/json')
@@ -49,13 +49,13 @@ export class RequestJson {
         }
     }
 
-    protected async send({ method, url, body, headers, signal }: RequestJsonData): Promise<ResponseJsonData> {
+    protected async send({ method, url, body, headers, signal }: RequestData): Promise<ResponseData> {
         const urlFull = this.baseUrl ? this.baseUrl + url : url
         const headersMerge = { ...this.headersDefault, ...headers }
         const response = await fetch(urlFull, { method: method, body: JSON.stringify(body), headers: headersMerge, signal })
         const bodyJson = await response.json()
         const responseData = { status: response.status, headers: response.headers, body: bodyJson }
         if (response.ok) return responseData
-        throw new RequestJsonError(response.statusText, responseData)
+        throw new RequestError(response.statusText, responseData)
     }
 }
