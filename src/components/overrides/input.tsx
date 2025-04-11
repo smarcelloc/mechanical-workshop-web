@@ -11,6 +11,7 @@ function Input({ className, error, readOnly, tabIndex, ...props }: InputProps) {
             readOnly={readOnly}
             tabIndex={readOnly ? -1 : tabIndex}
             className={cn(
+                'h-10',
                 error && 'border-destructive focus-visible:border-destructive ring-destructive/20 dark:ring-destructive/40',
                 readOnly && 'cursor-default focus-visible:ring-transparent focus-visible:border-input',
                 className
