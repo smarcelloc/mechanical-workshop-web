@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Input, InputProps } from "@/components/ui/input"
+import { Input, InputProps } from "@/components/overrides/input"
 
 export default function Email({ ...props }: InputProps) {
   return (

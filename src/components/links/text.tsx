@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
 
 export default function LinkText({ children, className, ...props }: React.ComponentProps<typeof Link>) {
     return (
@@ -11,5 +11,5 @@ export default function LinkText({ children, className, ...props }: React.Compon
             {...props}>
             {children}
         </Link>
-    );
+    )
 }

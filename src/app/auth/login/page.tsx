@@ -1,6 +1,6 @@
 import { InputEmail, InputPassword } from "@/components/inputs"
 import { LinkText } from "@/components/links"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/overrides/button"
 import { Label } from "@/components/ui/label"
 
 export default function Login() {

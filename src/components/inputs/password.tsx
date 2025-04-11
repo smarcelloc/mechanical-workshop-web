@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { useState } from "react"
-import { Input, InputProps } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Input, InputProps } from "@/components/overrides/input"
+import { Button } from "@/components/overrides/button"
 import { Eye, EyeOff } from "lucide-react"
 
 export default function Password({ ...props }: InputProps) {

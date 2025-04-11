@@ -1,6 +1,6 @@
 import { InputEmail, InputPassword } from "@/components/inputs"
 import { LinkText } from "@/components/links"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/overrides/button"
 import { Label } from "@/components/ui/label"
 
 export default function ResetPassword() {
@@ -8,10 +8,9 @@ export default function ResetPassword() {
         <form>
             <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">E-mail</Label>
                     <InputEmail
                         id="email"
-                        placeholder="email@example.com"
                         readOnly />
                 </div>
 
