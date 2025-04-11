@@ -18,7 +18,10 @@ const eslintConfig = [
       "react/jsx-max-props-per-line": [1, { "maximum": 1 }],
       "react/jsx-closing-bracket-location": [1, "after-props"],
       "react/jsx-first-prop-new-line": [1, "multiprop"],
-      "semi": ["error", "never"]
+      "semi": ["error", "never"],
+      "quotes": ["error", "single"],
+      "@typescript-eslint/no-explicit-any": "off",
+
     }
   }
 ]
