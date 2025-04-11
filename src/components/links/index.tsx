@@ -1,1 +1,1 @@
-export { default as LinkText } from './text';
+export { default as LinkText } from './text'
