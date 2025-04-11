@@ -1,5 +1,5 @@
-import { CarIcon } from "lucide-react"
-import Link from "next/link"
+import { CarIcon } from 'lucide-react'
+import Link from 'next/link'
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (

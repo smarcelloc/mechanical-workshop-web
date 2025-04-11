@@ -1,7 +1,7 @@
-import { InputEmail } from "@/components/inputs"
-import { LinkText } from "@/components/links"
-import { Button } from "@/components/overrides/button"
-import { Label } from "@/components/ui/label"
+import { InputEmail } from '@/components/inputs'
+import { LinkText } from '@/components/links'
+import { Button } from '@/components/overrides/button'
+import { Label } from '@/components/ui/label'
 
 export default function ForgetPassword() {
     return (
