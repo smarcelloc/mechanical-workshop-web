@@ -9,7 +9,8 @@ export default function LoginLayout({ children }: Readonly<{ children: React.Rea
                 <div className="flex justify-center gap-2 md:justify-start">
                     <Link
                         href="/"
-                        className="flex items-center gap-2 font-medium">
+                        className="flex items-center gap-2 font-medium"
+                        tabIndex={-1}>
                         <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
                             <CarIcon className="size-4" />
                         </div>

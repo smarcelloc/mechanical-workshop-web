@@ -17,7 +17,10 @@ export default function LoginPage() {
 
                     <div className="grid gap-2">
                         <Label htmlFor="email">E-mail</Label>
-                        <InputEmail id="email" />
+                        <InputEmail
+                            id="email"
+                            autoFocus
+                            tabIndex={1} />
                     </div>
 
                     <div className="grid gap-2">
@@ -30,7 +33,9 @@ export default function LoginPage() {
                                 Esqueceu a sua senha?
                             </LinkText>
                         </div>
-                        <InputPassword id="password" />
+                        <InputPassword
+                            id="password"
+                            tabIndex={2} />
                     </div>
 
                     <Button
