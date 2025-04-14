@@ -1,18 +1,34 @@
 'use client'
 
-import { InputEmail, InputPassword, Button, LinkText, Loading, Label } from '@/components'
+import { InputEmail, InputPassword, Button, LinkText, Loading, Label, InputError } from '@/components'
+import { ApiMechanicalError, useApiMechanical } from '@/hooks'
 import { useState } from 'react'
 
 export default function LoginPage() {
+    const api = useApiMechanical('http://localhost:8000')
+
     const [loading, setLoading] = useState(false)
+    const [formError, setFormError] = useState<Record<string, string[]>>()
+
+    const [email, setEmail] = useState<string>()
+    const [password, setPassword] = useState<string>()
 
     async function login(e: React.FormEvent<HTMLFormElement>) {
         try {
-            setLoading(true)
             e.preventDefault()
+            setFormError({})
+            setLoading(true)
+            const response = await api.login(email, password)
+            console.log(response)
             setLoading(false)
         } catch (error) {
             setLoading(false)
+
+            if (error instanceof ApiMechanicalError && error.responde.code === 422) {
+                setFormError(error.responde.data)
+                return
+            }
+
             console.log(error)
         }
     }
@@ -37,7 +53,11 @@ export default function LoginPage() {
                         <InputEmail
                             id="email"
                             autoFocus
-                            tabIndex={1} />
+                            tabIndex={1}
+                            value={email}
+                            error={Boolean(formError?.email?.[0])}
+                            onChange={e => setEmail(e.target.value)} />
+                        {formError?.email && <InputError>{formError?.email?.[0]}</InputError>}
                     </div>
 
                     <div className="grid gap-2">
@@ -52,7 +72,11 @@ export default function LoginPage() {
                         </div>
                         <InputPassword
                             id="password"
-                            tabIndex={2} />
+                            tabIndex={2}
+                            value={password}
+                            error={Boolean(formError?.password?.[0])}
+                            onChange={e => setPassword(e.target.value)} />
+                        {formError?.password && <InputError>{formError?.password?.[0]}</InputError>}
                     </div>
 
                     <Button
