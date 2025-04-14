@@ -10,7 +10,7 @@ export default function LoginPage() {
     const alert = useAlert()
 
     const [loading, setLoading] = useState(false)
-    const [formError, setFormError] = useState<Record<string, string[]>>()
+    const [formError, setFormError] = useState<Record<string, string[]> | null>(null)
 
     const [email, setEmail] = useState<string>()
     const [password, setPassword] = useState<string>()
@@ -18,7 +18,7 @@ export default function LoginPage() {
     async function login(e: React.FormEvent<HTMLFormElement>) {
         try {
             e.preventDefault()
-            setFormError({})
+            setFormError(null)
             setLoading(true)
             const response = await api.login(email, password)
             alert.success(fmt(messages.LOGIN_SUCCESS, response.user.name))
