@@ -1,3 +1,7 @@
+// Components UI
+export { Label } from './ui/label'
+
+
 export { default as Button } from './button'
 export { default as Input } from './input'
 export { default as InputEmail } from './input-email'

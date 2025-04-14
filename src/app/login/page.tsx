@@ -1,7 +1,6 @@
 'use client'
 
-import { Label } from '@/components/ui/label'
-import { InputEmail, InputPassword, Button, LinkText, Loading } from '@/components'
+import { InputEmail, InputPassword, Button, LinkText, Loading, Label } from '@/components'
 import { useState } from 'react'
 
 export default function LoginPage() {
