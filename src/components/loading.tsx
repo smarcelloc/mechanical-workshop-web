@@ -13,7 +13,7 @@ export default function Loading({
     message = 'Carregando...',
     description = 'Por favor, aguarde enquanto processamos sua solicitação',
     show = true,
-    delay = 500
+    delay = 600
 }: LoadingProps) {
     const [shouldRender, setShouldRender] = useState(false)
 
