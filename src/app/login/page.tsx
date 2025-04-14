@@ -1,11 +1,13 @@
 'use client'
 
 import { InputEmail, InputPassword, Button, LinkText, Loading, Label, InputError } from '@/components'
-import { ApiMechanicalError, useApiMechanical } from '@/hooks'
+import { ApiMechanicalError, useApiMechanical, useAlert } from '@/hooks'
+import { messages, fmt } from '@/lib'
 import { useState } from 'react'
 
 export default function LoginPage() {
     const api = useApiMechanical('http://localhost:8000')
+    const alert = useAlert()
 
     const [loading, setLoading] = useState(false)
     const [formError, setFormError] = useState<Record<string, string[]>>()
@@ -19,17 +21,34 @@ export default function LoginPage() {
             setFormError({})
             setLoading(true)
             const response = await api.login(email, password)
-            console.log(response)
+            alert.success(fmt(messages.LOGIN_SUCCESS, response.user.name))
             setLoading(false)
         } catch (error) {
             setLoading(false)
 
+            if (error instanceof ApiMechanicalError && error.responde.code === 400) {
+                alert.error(error.responde.data?.message)
+                return
+            }
+
+            if (error instanceof ApiMechanicalError && error.responde.code === 401) {
+                alert.error(messages.LOGIN_INVALID_CREDENTIALS)
+                return
+            }
+
             if (error instanceof ApiMechanicalError && error.responde.code === 422) {
+                alert.error(messages.DATA_INVALID)
                 setFormError(error.responde.data)
                 return
             }
 
+            if (error instanceof ApiMechanicalError && error.responde.code === 429) {
+                alert.error(messages.LOGIN_TOO_MANY_REQUESTS)
+                return
+            }
+
             console.log(error)
+            alert.error(messages.LOGIN_FAILED)
         }
     }
 
