@@ -1,10 +1,28 @@
+'use client'
+
 import { Label } from '@/components/ui/label'
-import { InputEmail, InputPassword, Button, LinkText } from '@/components'
+import { InputEmail, InputPassword, Button, LinkText, Loading } from '@/components'
+import { useState } from 'react'
 
 export default function LoginPage() {
+    const [loading, setLoading] = useState(false)
+
+    async function login(e: React.FormEvent<HTMLFormElement>) {
+        try {
+            setLoading(true)
+            e.preventDefault()
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+            console.log(error)
+        }
+    }
+
     return (
         <main>
-            <form className="flex flex-col gap-12">
+            <form
+                onSubmit={login}
+                className="flex flex-col gap-12">
 
                 <div className="flex flex-col items-center gap-2 text-center">
                     <h1 className="text-2xl font-bold">Acessar a sua conta</h1>
@@ -41,13 +59,16 @@ export default function LoginPage() {
                     <Button
                         type="submit"
                         className="w-full"
-                        tabIndex={3}>
+                        tabIndex={3}
+                        disabled={loading}>
                         Acessar
                     </Button>
 
                 </div>
 
             </form>
+
+            <Loading show={loading} />
         </main>
     )
 }   
